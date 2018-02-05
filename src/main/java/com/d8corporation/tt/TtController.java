@@ -7,10 +7,12 @@ import com.d8corporation.tt.service.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -21,9 +23,17 @@ public class TtController {
     IVerification<EncryptRequest> verification;
     @Autowired
     ICrypt crypt;
+    @Autowired
+    private Environment environment;
+
 
     private static String getDisplayPan(String pan) {
         return pan.replace(pan.subSequence(6, 12), "-");
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+        return "test";
     }
 
     @RequestMapping(value = "/encrypt", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
@@ -58,7 +68,7 @@ public class TtController {
         return jsonObject.toString();
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list() {
         JSONArray jsonArray = new JSONArray();
         for (CardData cardData : list) {
