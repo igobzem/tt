@@ -3,16 +3,17 @@ package com.d8corporation.tt;
 import com.d8corporation.tt.Data.CardData;
 import com.d8corporation.tt.Data.DecryptRequest;
 import com.d8corporation.tt.Data.EncryptRequest;
-import com.d8corporation.tt.service.*;
+import com.d8corporation.tt.service.CryptException;
+import com.d8corporation.tt.service.ICrypt;
+import com.d8corporation.tt.service.IVerification;
+import com.d8corporation.tt.service.VerificationException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -23,17 +24,9 @@ public class TtController {
     IVerification<EncryptRequest> verification;
     @Autowired
     ICrypt crypt;
-    @Autowired
-    private Environment environment;
-
 
     private static String getDisplayPan(String pan) {
         return pan.replace(pan.subSequence(6, 12), "-");
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test() {
-        return "test";
     }
 
     @RequestMapping(value = "/encrypt", method = RequestMethod.PUT, produces = "application/json;charset=utf-8")
