@@ -1,0 +1,4 @@
+keytool -genkeypair -alias <alial> -keyalg RSA -keysize 2048 -keystore <keystore>.jks -validity 3650
+keytool -list -v -keystore <keystore>.jks
+keytool -import -alias <alias> -file <file>.crt -keystore <keystore>.jks -storepass <password>
+keytool -export -keystore <keystore>.jks -alias <alias> -file <certificate>.crt
