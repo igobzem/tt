@@ -26,7 +26,7 @@ public class TtController {
     @Autowired
     ICrypt crypt;
 
-    @GetMapping("/")
+    @GetMapping("/test")
     public String home(Principal principal){
         return String.format("Hello %s!", principal.getName());
     }
