@@ -11,8 +11,7 @@ server:
     trust-store: classpath:server-truststore.jks
     trust-store-password: secret
     enabled: true
-    client-auth: need
-    
+
 logging:
   level:
     org.springframework.security: DEBUG
