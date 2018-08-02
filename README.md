@@ -4,7 +4,7 @@
 4 git check out test
 ---------------------
 git cherry-pick
-
+----------------------
 
  1. **Generating the Server Keystore:**
 `keytool -genkeypair -alias secure-server -keyalg RSA -dname "CN=localhost,OU=d8,O=d8,L=Riga,S=Latvia,C=lv" -keypass secret -keystore server-keystore.jks -storepass secret`
